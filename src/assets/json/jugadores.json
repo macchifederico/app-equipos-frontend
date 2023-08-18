@@ -1,0 +1,291 @@
+{
+  "jugadores": 
+  [
+    {
+      "id": 1,
+      "nombre": "Rulo",
+      "edad": 42,
+      "posicion": ["defensor"],
+      "url": "../../../assets/img/foto.jpg",
+      "habilidades": {
+        "tiro": 90,
+        "remate": 90,
+        "defensa": 90,
+        "velocidad": 99,
+        "gambeta": 50,
+        "estado_fisico": 67,
+        "tecnica": 12,
+        "rusticidad": 99,
+        "temperamento": 40,
+        "prop_lesiones": 12
+      }
+    },
+    {
+      "id": 2,
+      "nombre": "Tone",
+      "edad": 42,
+      "posicion": ["delantero"],
+      "url": "../../../assets/img/foto.jpg",
+      "habilidades": {
+        "tiro": 90,
+        "remate": 90,
+        "defensa": 90,
+        "velocidad": 99,
+        "gambeta": 50,
+        "estado_fisico": 67,
+        "tecnica": 12,
+        "rusticidad": 99,
+        "temperamento": 40,
+        "prop_lesiones": 12
+      }
+    },
+    {
+      "id": 3,
+      "nombre": "Klauss",
+      "edad": 41,
+      "posicion": ["defensor"],
+      "url": "../../../assets/img/foto.jpg",
+      "habilidades": {
+        "tiro": 90,
+        "remate": 90,
+        "defensa": 90,
+        "velocidad": 99,
+        "gambeta": 50,
+        "estado_fisico": 67,
+        "tecnica": 12,
+        "rusticidad": 99,
+        "temperamento": 40,
+        "prop_lesiones": 12
+      }
+    },
+    {
+      "id": 4,
+      "nombre": "Reinold",
+      "edad": 39,
+      "posicion": ["arquero"],
+      "url": "../../../assets/img/foto.jpg",
+      "habilidades": {
+        "tiro": 90,
+        "remate": 90,
+        "defensa": 90,
+        "velocidad": 99,
+        "gambeta": 50,
+        "estado_fisico": 67,
+        "tecnica": 12,
+        "rusticidad": 99,
+        "temperamento": 40,
+        "prop_lesiones": 12
+      }
+    },
+    {
+      "id": 5,
+      "nombre": "Corch",
+      "edad": 41,
+      "posicion": ["mediocampista", "defensor"],
+      "url": "../../../assets/img/foto.jpg",
+      "habilidades": {
+        "tiro": 90,
+        "remate": 90,
+        "defensa": 90,
+        "velocidad": 99,
+        "gambeta": 50,
+        "estado_fisico": 67,
+        "tecnica": 12,
+        "rusticidad": 99,
+        "temperamento": 40,
+        "prop_lesiones": 12
+      }
+    },
+    {
+      "id": 6,
+      "nombre": "Flip",
+      "edad": 41,
+      "posicion": ["delantero"],
+      "url": "../../../assets/img/foto.jpg",
+      "habilidades": {
+        "tiro": 90,
+        "remate": 90,
+        "defensa": 90,
+        "velocidad": 99,
+        "gambeta": 50,
+        "estado_fisico": 67,
+        "tecnica": 12,
+        "rusticidad": 99,
+        "temperamento": 40,
+        "prop_lesiones": 12
+      }
+    },
+    {
+      "id": 7,
+      "nombre": "Tenner",
+      "edad": 41,
+      "posicion": ["defensor"],
+      "url": "../../../assets/img/foto.jpg",
+      "habilidades": {
+        "tiro": 90,
+        "remate": 90,
+        "defensa": 90,
+        "velocidad": 99,
+        "gambeta": 50,
+        "estado_fisico": 67,
+        "tecnica": 12,
+        "rusticidad": 99,
+        "temperamento": 40,
+        "prop_lesiones": 12
+      }
+    },
+    {
+      "id": 8,
+      "nombre": "Castoro",
+      "edad": 35,
+      "posicion": ["mediocampista", "delantero"],
+      "url": "../../../assets/img/foto.jpg",
+      "habilidades": {
+        "tiro": 90,
+        "remate": 30,
+        "defensa": 90,
+        "velocidad": 70,
+        "gambeta": 90,
+        "estado_fisico": 67,
+        "tecnica": 30,
+        "rusticidad": 70,
+        "temperamento": 100,
+        "prop_lesiones": 12
+      }
+    },
+    {
+      "id": 9,
+      "nombre": "Loco",
+      "edad": 33,
+      "posicion": ["arquero", "delantero"],
+      "url": "../../../assets/img/foto.jpg",
+      "habilidades": {
+        "tiro": 90,
+        "remate": 90,
+        "defensa": 90,
+        "velocidad": 99,
+        "gambeta": 50,
+        "estado_fisico": 67,
+        "tecnica": 12,
+        "rusticidad": 99,
+        "temperamento": 40,
+        "prop_lesiones": 12
+      }
+    },
+    {
+      "id": 10,
+      "nombre": "Bochax",
+      "edad": 35,
+      "posicion": ["mediocampista", "defensor"],
+      "url": "../../../assets/img/foto.jpg",
+      "habilidades": {
+        "tiro": 90,
+        "remate": 90,
+        "defensa": 90,
+        "velocidad": 99,
+        "gambeta": 50,
+        "estado_fisico": 67,
+        "tecnica": 12,
+        "rusticidad": 99,
+        "temperamento": 40,
+        "prop_lesiones": 12
+      }
+    },
+    {
+      "id": 11,
+      "nombre": "Square",
+      "edad": 35,
+      "posicion": ["defensor"],
+      "url": "../../../assets/img/foto.jpg",
+      "habilidades": {
+        "tiro": 90,
+        "remate": 90,
+        "defensa": 90,
+        "velocidad": 99,
+        "gambeta": 50,
+        "estado_fisico": 67,
+        "tecnica": 12,
+        "rusticidad": 99,
+        "temperamento": 40,
+        "prop_lesiones": 12
+      }
+    },
+    {
+      "id": 12,
+      "nombre": "Onur",
+      "edad": 35,
+      "posicion": ["delantero"],
+      "url": "../../../assets/img/foto.jpg",
+      "habilidades": {
+        "tiro": 90,
+        "remate": 90,
+        "defensa": 90,
+        "velocidad": 99,
+        "gambeta": 50,
+        "estado_fisico": 67,
+        "tecnica": 12,
+        "rusticidad": 99,
+        "temperamento": 40,
+        "prop_lesiones": 12
+      }
+    },
+    {
+      "id": 13,
+      "nombre": "Ixam",
+      "edad": 35,
+      "posicion": ["mediocampista"],
+      "url": "../../../assets/img/foto.jpg",
+      "habilidades": {
+        "tiro": 90,
+        "remate": 90,
+        "defensa": 90,
+        "velocidad": 99,
+        "gambeta": 50,
+        "estado_fisico": 67,
+        "tecnica": 12,
+        "rusticidad": 99,
+        "temperamento": 40,
+        "prop_lesiones": 12
+      }
+    },
+    {
+      "id": 14,
+      "nombre": "Eleno",
+      "edad": 35,
+      "posicion": ["mediocampista"],
+      "url": "../../../assets/img/foto.jpg",
+      "habilidades": {
+        "tiro": 90,
+        "remate": 90,
+        "defensa": 90,
+        "velocidad": 99,
+        "gambeta": 50,
+        "estado_fisico": 67,
+        "tecnica": 12,
+        "rusticidad": 99,
+        "temperamento": 40,
+        "prop_lesiones": 12
+      }
+    },
+    {
+      "id": 15,
+      "nombre": "French",
+      "edad": 41,
+      "posicion": ["mediocampista", "delantero"],
+      "url": "../../../assets/img/foto.jpg",
+      "habilidades": {
+        "tiro": 90,
+        "remate": 90,
+        "defensa": 70,
+        "velocidad": 40,
+        "gambeta": 40,
+        "estado_fisico": 60,
+        "tecnica": 60,
+        "rusticidad": 80,
+        "temperamento": 70,
+        "prop_lesiones": 60
+      }
+    }
+  ]
+}
+
