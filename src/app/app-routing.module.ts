@@ -8,7 +8,7 @@ import { TarjetaComponent } from './components/tarjeta/tarjeta.component';
 const routes: Routes = [
   {path:'', redirectTo: 'principal', pathMatch: 'full'},
   {path: 'principal', component: PrincipalComponent},
-  {path: 'equipos/:equipo1/:equipo2', component: EquiposComponent},
+  {path: 'equipos', component: EquiposComponent},
   {path: 'plantel', component: PlantelComponent},
   {path: 'jugadores', component: TarjetaComponent}
 

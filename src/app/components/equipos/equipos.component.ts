@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
 
 
 @Component({
@@ -10,13 +11,20 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class EquiposComponent {
 
-  equipos: any = [];
-  constructor(private router: Router, private rutaActiva: ActivatedRoute){
+  teamOne: any = [];
+  teamTwo: any = []; 
+  nombre: string = '';
+
+  constructor(private router: Router, private rutaActiva: ActivatedRoute, private ds: DataService){
 
   }
 
   ngOnInit(){
-
+    this.ds.enviaEquipos.subscribe(data => {              
+      this.teamOne = data.equipo1;      
+      this.teamTwo = data.equipo2;
+    });
+    
   }
 
 }
