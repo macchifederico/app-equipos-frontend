@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
 import jugadores from 'src/assets/json/jugadores.json'
 
 @Component({
@@ -10,18 +11,19 @@ import jugadores from 'src/assets/json/jugadores.json'
 })
 export class PlantelComponent {
 
+  @Input() dataEquipos: any;
   jugadores: any = [];
   promedio: any;
   teamOne : any = [];
   teamTwo : any = [];
   jugadoresSeleccionados: any = [];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private ds: DataService) {
   }
 
   ngOnInit() {
     this.sacarPromedios();
-  
+    
   }
 
   sacarPromedios(){
@@ -51,11 +53,18 @@ export class PlantelComponent {
     
   }
 
-  getTeams(){
+  getTeams(){    
     this.teamOne = [...this.jugadoresSeleccionados].sort(() => Math.random() > 0.5 ? 1 : -1).slice(0,this.jugadoresSeleccionados.length/2);
     this.teamTwo = this.jugadoresSeleccionados.filter((jugador: any) => !this.teamOne.includes(jugador));
+
+    this.ds.enviaEquipos.emit({
+      equipo1: this.teamOne,
+      equipo2: this.teamTwo
+    })
     
-    this.router.navigate(['equipos', this.teamOne, this.teamTwo]);
+    this.router.navigate(['equipos']);
+    
+    //this.router.navigate(['equipos', this.teamOne, this.teamTwo]);
     // return [this.teamOne, this.teamTwo];
   }
 }
