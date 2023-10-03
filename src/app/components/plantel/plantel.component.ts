@@ -51,7 +51,6 @@ export class PlantelComponent {
   getTeams(){    
     this.teamOne = [...this.jugadoresSeleccionados].sort(() => Math.random() > 0.5 ? 1 : -1).slice(0,this.jugadoresSeleccionados.length/2);
     this.teamTwo = this.jugadoresSeleccionados.filter((jugador: any) => !this.teamOne.includes(jugador)); 
-    console.log("plantel", this.teamOne, this.teamTwo);
     
     this.ds.updatePlayersTeamsId(this.teamOne, this.teamTwo).subscribe({
       next: (data: any) => {
