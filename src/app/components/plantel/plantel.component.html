@@ -1,25 +1,9 @@
-<!-- <form (ngSubmit)="generarEquipos()">
-    <ul class="list-group flex">
-        <li class="list-group-item" *ngFor="let jugador of jugadores; let i = index">
-            <input type="checkbox" name="" id="" hidden>
-            <div class="row">
-                <div class="col-6">        
-                    {{jugador.nombre}}
-                </div>
-                <div class="col-6">
-                    <ngb-rating [max]="5" [readonly]="true"  [rate]="jugador.promedioHabilidades"></ngb-rating>
-                </div> 
-            </div>
-        </li>
-    </ul>
-</form> -->
-
-<form class="form-group" (submit)="getTeams()">
     <h3 class="mb-3">Elegi jugadores</h3>
-    <button class="btn btn-info mb-3" style="width: 100%;" type="submit">Generar equipos</button>
+    <button class="btn btn-info mb-3" style="width: 100%;" type="submit"
+    (click)="getTeams()">Generar equipos</button>
     <div class="form-grupu form-check" *ngFor="let jugador of jugadores; let i = index">
-        <input class="form-check-input col-3" type="checkbox" [value]="jugador" 
-        (click)="generarEquipos(jugador)">
+        <input class="form-check-input col-3" type="checkbox" [value]="jugador"
+        id="exampleCheck{{i}}" (click)="seleccionarJugadores(jugador)">
         <div class="row">
             <div class="col-6">        
                 {{jugador.nombre}}
@@ -29,4 +13,4 @@
             </div> 
         </div>
     </div>
-</form>
+    <button class="btn btn-warning mb-3" style="width: 100%;" routerLink="/crear_jugador">Agregar jugador</button>

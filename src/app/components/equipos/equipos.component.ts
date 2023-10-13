@@ -20,11 +20,17 @@ export class EquiposComponent {
   }
 
   ngOnInit(){
-    this.ds.enviaEquipos.subscribe(data => {              
-      this.teamOne = data.equipo1;      
-      this.teamTwo = data.equipo2;
-    });
-    
+    this.getTeams();
+  
   }
 
+  getTeams(){
+    let userId = 1
+    this.ds.getTeamsByUserId(userId).subscribe({
+      next: (res: any) => {
+        this.teamOne = res.teams.teamOne;
+        this.teamTwo = res.teams.teamTwo;        
+      }
+    })
+  }
 }

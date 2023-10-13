@@ -1,0 +1,113 @@
+<h3 class="mb-3">Crear jugadores</h3>
+<form [formGroup]="jugadorForm" (ngSubmit)="crearJugador(jugadorForm.value)">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre"
+            aria-describedby="basic-addon1" formControlName="nombre">
+    </div>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Apodo" aria-label="Apodo"
+            aria-describedby="basic-addon1" formControlName="apodo">
+    </div>
+    <label for="habilidades" class="mb-3">Posicion: "Soy crack..."</label>
+    <select class="form-select form-select mb-3" aria-label="Small select example" formControlName="posicion1">
+        <option selected>Elegir...</option>
+        <option value="1">Arquero</option>
+        <option value="2">Defensor</option>
+        <option value="3">Mediocampista</option>
+        <option value="4">Delantero</option>
+    </select>    
+    <label for="habilidades" class="mb-3">Posicion: "Me defiendo..."</label>
+    <select class="form-select form-select mb-3" aria-label="Small select example" formControlName="posicion2">
+        <option selected>Elegir...</option>
+        <option value="1">Arquero</option>
+        <option value="2">Defensor</option>
+        <option value="3">Mediocampista</option>
+        <option value="4">Delantero</option>
+    </select>
+    <h6>Habilidades</h6>
+    <label for="habilidades" class="mb-3">Tiro</label>
+    <select class="form-select form-select-sm mb-3" aria-label="Small select example" formControlName="tiro">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <label for="habilidades" class="mb-3">Remate</label>
+    <select class="form-select form-select-sm mb-3" aria-label="Small select example" formControlName="remate">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <label for="habilidades" class="mb-3">Defensa</label>
+    <select class="form-select form-select-sm mb-3" aria-label="Small select example" formControlName="defensa">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <label for="habilidades" class="mb-3">Velocidad</label>
+    <select class="form-select form-select-sm mb-3" aria-label="Small select example" formControlName="velocidad">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <label for="habilidades" class="mb-3">Gambeta</label>
+    <select class="form-select form-select-sm mb-3" aria-label="Small select example" formControlName="gambeta">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <label for="habilidades" class="mb-3">Fisico</label>
+    <select class="form-select form-select-sm mb-3" aria-label="Small select example" formControlName="fisico">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <label for="habilidades" class="mb-3">Tecnica</label>
+    <select class="form-select form-select-sm mb-3" aria-label="Small select example" formControlName="tecnica">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <label for="habilidades" class="mb-3">Rusticidad</label>
+    <select class="form-select form-select-sm mb-3" aria-label="Small select example" formControlName="rusticidad">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <label for="habilidades" class="mb-3">Temperamento</label>
+    <select class="form-select form-select-sm mb-3" aria-label="Small select example" formControlName="temperamento">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <label for="habilidades" class="mb-3">Lesiones</label>
+    <select class="form-select form-select-sm mb-3" aria-label="Small select example" formControlName="lesiones">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <div class="input-group mb-3">
+        <input type="file" class="form-control" placeholder="Img..." aria-label="Img"
+            aria-describedby="basic-addon2" formControlName="img_url">
+    </div>
+    <button class="btn btn-info mb-3" style="width: 100%;" type="submit">Guardar</button>
+</form>
