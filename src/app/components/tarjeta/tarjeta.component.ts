@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 import jugadores from 'src/assets/json/jugadores.json'
 
 
@@ -15,10 +16,21 @@ export class TarjetaComponent {
   mejorHabilidad: any;
   peorHabilidad: any;
 
-  constructor() {}
+  constructor(private ds: DataService) {}
 
   ngOnInit() {
-    this.jugadores = jugadores.jugadores    
+    // this.jugadores = jugadores.jugadores 
+    this.obtenerJugadoresPorUsuario();   
   }
   
+  obtenerJugadoresPorUsuario(){
+    const id_usuario = 1; //provisorio
+    this.ds.getAllPlayersByUserId(id_usuario).subscribe({
+      next: (data: any) => {      
+        this.jugadores = data.players;
+      },
+      error: (error: any) => {
+      }
+    })
+  }
 }
