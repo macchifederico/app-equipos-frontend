@@ -7,7 +7,8 @@ import { Observable, Subject, BehaviorSubject } from 'rxjs';
 })
 export class DataService {
 
-  API_URL= "http://localhost:3000/api/jugadores";  
+  // API_URL= "http://localhost:3000/api/jugadores";  
+  API_URL= "https://app-equipos-backend-rtf8.vercel.app";
 
   constructor(private http: HttpClient) { }
 
