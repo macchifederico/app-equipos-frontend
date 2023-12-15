@@ -14,6 +14,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PrincipalComponent } from './components/principal/principal.component';
 import { CrearJugadorComponent } from './components/crear-jugador/crear-jugador.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GraficoComponent } from './components/grafico/grafico.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PlantelComponent,
     TarjetaComponent,
     PrincipalComponent,
-    CrearJugadorComponent
+    CrearJugadorComponent,
+    GraficoComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     NgbModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

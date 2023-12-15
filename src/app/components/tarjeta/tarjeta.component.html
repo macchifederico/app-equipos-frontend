@@ -1,16 +1,27 @@
 <p>Tarjeta por jugador</p>
 
-<div class="card" style="width: 18rem; margin-bottom: 10px;" *ngFor="let jugador of jugadores; let i = index">
-    <img src="{{jugador.img_url}}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{jugador.nombre.toUpperCase()}}</h5>
-      <span class="card-text">Aca va el grafico de habilidades</span>
+ <div class="row g-4" >
+  <div class="col-sm-12 col-md-4" *ngFor="let jugador of jugadores; let i = index">
+    <div class="card">
+      <img src="{{jugador.img_url}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{jugador.nombre.toUpperCase()}}</h5>
+        <span class="card-text">Aca va el grafico de habilidades</span>
+      </div>
+      <!-- <app-grafico></app-grafico> -->
+      <div class="text-center">
+        <canvas baseChart class="chart"
+        [data]="radarChartData"
+        [options]="radarChartOptions"
+        [type]="radarChartType">
+        </canvas>
+      </div>
+      <ul class="list-group coso">
+        <li class="list-group-item" *ngIf="jugador.posicion_1.toUpperCase()">Posicion: {{jugador.posicion_1.toUpperCase() ?
+          jugador.posicion_1.toUpperCase() : ""}}</li>
+        <li class="list-group-item" *ngIf="jugador.posicion_2.toUpperCase()">Posicion: {{jugador.posicion_2.toUpperCase()}}
+        </li>
+      </ul>
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item" *ngIf="jugador.posicion_1.toUpperCase()">Posicion: {{jugador.posicion_1.toUpperCase() ? jugador.posicion_1.toUpperCase() : ""}}</li>
-      <li class="list-group-item" *ngIf="jugador.posicion_2.toUpperCase()">Posicion: {{jugador.posicion_2.toUpperCase()}}</li>
-    </ul>
-    <!-- <div class="card-body">
-      <p class="card-text">Aca va el grafico de habilidades</p>
-    </div> -->
- </div>
+  </div>
+</div>
