@@ -1,141 +1,276 @@
-<h3 class="mb-3">Crear jugadores</h3>
-<form [formGroup]="jugadorForm" (ngSubmit)="crearJugador(jugadorForm)">
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre"
-            aria-describedby="basic-addon1" formControlName="nombre"
-            [class.input-error]="this.jugadorForm.get('nombre')?.touched"
-            [class.input-ok]="this.jugadorForm.get('nombre')?.valid">
+<div class="create-player-container">
+  <!-- Header minimalista -->
+  <div class="form-header">
+    <div class="header-top">
+      <button class="back-button" type="button" (click)="goBack()">
+        <span class="back-icon">←</span>
+        Volver
+      </button>
+      <h2 class="form-title">Crear Jugador</h2>
+      <div class="step-counter">{{ currentStep }}/{{ totalSteps }}</div>
     </div>
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Apodo" aria-label="Apodo"
-            aria-describedby="basic-addon1" formControlName="apodo"
-            [class.input-error]="this.jugadorForm.get('apodo')?.touched"
-            [class.input-ok]="this.jugadorForm.get('apodo')?.valid">
+
+    <!-- Progress Bar minimalista -->
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div
+          class="progress-fill"
+          [style.width.%]="getProgressPercentage()"
+        ></div>
+      </div>
     </div>
-    <label for="habilidades" class="mb-3">Posicion: "Soy crack..."</label>
-    <select class="form-select form-select mb-3" aria-label="Small select example" formControlName="posicion1"
-        [class.input-error]="this.jugadorForm.get('posicion1')?.touched"
-        [class.input-ok]="this.jugadorForm.get('posicion1')?.valid">
-        <option value="" disabled selected>Elegir...</option>
-        <option value="Arquero">Arquero</option>
-        <option value="Defensor">Defensor</option>
-        <option value="Mediocampista">Mediocampista</option>
-        <option value="Delantero">Delantero</option>
-    </select>    
-    <label for="habilidades" class="mb-3">Posicion: "Me defiendo..."</label>
-    <select class="form-select form-select mb-3" aria-label="Small select example" formControlName="posicion2"
-    [class.input-error]="this.jugadorForm.get('posicion2')?.touched"
-    [class.input-ok]="this.jugadorForm.get('posicion2')?.valid">
-        <option value="" disabled selected>Elegir...</option>
-        <option value="Arquero">Arquero</option>
-        <option value="Defensor">Defensor</option>
-        <option value="Mediocampista">Mediocampista</option>
-        <option value="Delantero">Delantero</option>
-    </select>
-    <h6>Habilidades</h6>
-    <label for="habilidades" class="mb-3">Tiro</label>
-    <select class="form-select form-select-sm mb-3" aria-label="Small select example" formControlName="tiro"
-        [class.input-error]="this.jugadorForm.get('tiro')?.touched"
-        [class.input-ok]="this.jugadorForm.get('tiro')?.valid">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    <label for="habilidades" class="mb-3">Remate</label>
-    <select class="form-select form-select-sm mb-3" aria-label="Small select example" formControlName="remate"
-        [class.input-error]="this.jugadorForm.get('remate')?.touched"
-        [class.input-ok]="this.jugadorForm.get('remate')?.valid">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    <label for="habilidades" class="mb-3">Defensa</label>
-    <select class="form-select form-select-sm mb-3" aria-label="Small select example" formControlName="defensa"
-        [class.input-error]="this.jugadorForm.get('defensa')?.touched"
-        [class.input-ok]="this.jugadorForm.get('defensa')?.valid">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    <label for="habilidades" class="mb-3">Velocidad</label>
-    <select class="form-select form-select-sm mb-3" aria-label="Small select example" formControlName="velocidad"
-        [class.input-error]="this.jugadorForm.get('velocidad')?.touched"
-        [class.input-ok]="this.jugadorForm.get('velocidad')?.valid">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    <label for="habilidades" class="mb-3">Gambeta</label>
-    <select class="form-select form-select-sm mb-3" aria-label="Small select example" formControlName="gambeta"
-        [class.input-error]="this.jugadorForm.get('gambeta')?.touched"
-        [class.input-ok]="this.jugadorForm.get('gambeta')?.valid">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    <label for="habilidades" class="mb-3">Fisico</label>
-    <select class="form-select form-select-sm mb-3" aria-label="Small select example" formControlName="fisico"
-    [class.input-error]="this.jugadorForm.get('fisico')?.touched"
-    [class.input-ok]="this.jugadorForm.get('fisico')?.valid">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    <label for="habilidades" class="mb-3">Tecnica</label>
-    <select class="form-select form-select-sm mb-3" aria-label="Small select example" formControlName="tecnica"
-        [class.input-error]="this.jugadorForm.get('tecnica')?.touched"
-        [class.input-ok]="this.jugadorForm.get('tecnica')?.valid">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    <label for="habilidades" class="mb-3">Rusticidad</label>
-    <select class="form-select form-select-sm mb-3" aria-label="Small select example" formControlName="rusticidad"
-        [class.input-error]="this.jugadorForm.get('rusticidad')?.touched"
-        [class.input-ok]="this.jugadorForm.get('rusticidad')?.valid">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    <label for="habilidades" class="mb-3">Temperamento</label>
-    <select class="form-select form-select-sm mb-3" aria-label="Small select example" formControlName="temperamento"
-        [class.input-error]="this.jugadorForm.get('temperamento')?.touched"
-        [class.input-ok]="this.jugadorForm.get('temperamento')?.valid">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    <label for="habilidades" class="mb-3">Lesiones</label>
-    <select class="form-select form-select-sm mb-3" aria-label="Small select example" formControlName="lesiones"
-        [class.input-error]="this.jugadorForm.get('lesiones')?.touched"
-        [class.input-ok]="this.jugadorForm.get('lesiones')?.valid">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    <div class="input-group mb-3">
-        <input type="file" class="form-control" placeholder="Img..." aria-label="Img"
-            aria-describedby="basic-addon2" formControlName="img_url">
+
+    <h3 class="step-title">{{ getStepTitle() }}</h3>
+  </div>
+
+  <form [formGroup]="jugadorForm" class="player-form">
+
+    <!-- PASO 1: Información Esencial -->
+    <div class="form-step" *ngIf="currentStep === 1">
+      <div class="simple-form-card">
+        <div class="card-icon">⚽</div>
+        <h4 class="card-title">Información del Jugador</h4>
+        <p class="card-subtitle">Solo necesitamos algunos datos básicos</p>
+
+        <div class="form-fields">
+          <div class="field-group">
+            <label for="nombre" class="field-label">Nombre del jugador</label>
+            <input
+              id="nombre"
+              type="text"
+              class="form-input"
+              placeholder="Ej: Lionel Messi"
+              formControlName="nombre"
+              [class.invalid]="isFieldInvalid('nombre')"
+            >
+            <div class="field-error" *ngIf="isFieldInvalid('nombre')">
+              {{ getFieldError('nombre') }}
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="apodo" class="field-label">Apodo o alias</label>
+            <input
+              id="apodo"
+              type="text"
+              class="form-input"
+              placeholder="Ej: La Pulga"
+              formControlName="apodo"
+              [class.invalid]="isFieldInvalid('apodo')"
+            >
+            <div class="field-error" *ngIf="isFieldInvalid('apodo')">
+              {{ getFieldError('apodo') }}
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="posicion1" class="field-label">Posición principal</label>
+            <select
+              id="posicion1"
+              class="form-select"
+              formControlName="posicion1"
+              [class.invalid]="isFieldInvalid('posicion1')"
+            >
+              <option value="">Selecciona una posición</option>
+              <option value="Arquero">🥅 Arquero</option>
+              <option value="Defensor">🛡️ Defensor</option>
+              <option value="Mediocampista">⚙️ Mediocampista</option>
+              <option value="Delantero">⚽ Delantero</option>
+            </select>
+            <div class="field-error" *ngIf="isFieldInvalid('posicion1')">
+              {{ getFieldError('posicion1') }}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <button class="btn btn-info mb-3" style="width: 100%;" [disabled]="jugadorForm.invalid" type="submit">Guardar</button>
-</form>
+
+    <!-- PASO 2: Habilidades Principales -->
+    <div class="form-step" *ngIf="currentStep === 2">
+      <div class="simple-form-card">
+        <div class="card-icon">📊</div>
+        <h4 class="card-title">Habilidades del Jugador</h4>
+        <p class="card-subtitle">Ajusta las habilidades principales (1-5)</p>
+
+        <div class="skills-grid">
+          <!-- Habilidades principales -->
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-label">⚽ Tiro</span>
+              <span class="skill-value">{{ jugadorForm.get('tiro')?.value || 1 }}</span>
+            </div>
+            <input
+              type="range"
+              min="1"
+              max="5"
+              class="skill-slider"
+              formControlName="tiro"
+            >
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-label">💪 Remate</span>
+              <span class="skill-value">{{ jugadorForm.get('remate')?.value || 1 }}</span>
+            </div>
+            <input
+              type="range"
+              min="1"
+              max="5"
+              class="skill-slider"
+              formControlName="remate"
+            >
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-label">🛡️ Defensa</span>
+              <span class="skill-value">{{ jugadorForm.get('defensa')?.value || 1 }}</span>
+            </div>
+            <input
+              type="range"
+              min="1"
+              max="5"
+              class="skill-slider"
+              formControlName="defensa"
+            >
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-label">💨 Velocidad</span>
+              <span class="skill-value">{{ jugadorForm.get('velocidad')?.value || 1 }}</span>
+            </div>
+            <input
+              type="range"
+              min="1"
+              max="5"
+              class="skill-slider"
+              formControlName="velocidad"
+            >
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-label">🎯 Técnica</span>
+              <span class="skill-value">{{ jugadorForm.get('tecnica')?.value || 1 }}</span>
+            </div>
+            <input
+              type="range"
+              min="1"
+              max="5"
+              class="skill-slider"
+              formControlName="tecnica"
+            >
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-label">🏃 Físico</span>
+              <span class="skill-value">{{ jugadorForm.get('fisico')?.value || 1 }}</span>
+            </div>
+            <input
+              type="range"
+              min="1"
+              max="5"
+              class="skill-slider"
+              formControlName="fisico"
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASO 3: Vista previa y confirmación -->
+    <div class="form-step" *ngIf="currentStep === 3">
+      <div class="simple-form-card">
+        <div class="card-icon">👀</div>
+        <h4 class="card-title">Vista Previa</h4>
+        <p class="card-subtitle">Revisa la información antes de crear el jugador</p>
+
+        <div class="preview-section">
+          <!-- Resumen del jugador -->
+          <div class="player-summary">
+            <div class="summary-row">
+              <span class="summary-label">👤 Nombre:</span>
+              <span class="summary-value">{{ previewData.nombre || 'Sin definir' }}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">🏷️ Apodo:</span>
+              <span class="summary-value">{{ previewData.apodo || 'Sin definir' }}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">⚽ Posición:</span>
+              <span class="summary-value">{{ previewData.posicion1 || 'Sin definir' }}</span>
+            </div>
+          </div>
+
+          <!-- Habilidades resumen -->
+          <div class="skills-summary">
+            <h5 class="skills-title">📊 Habilidades</h5>
+            <div class="skills-preview-grid">
+              <div class="skill-preview">
+                <span class="skill-name">⚽ Tiro:</span>
+                <span class="skill-rating">{{ previewData.tiro || 1 }}/5</span>
+              </div>
+              <div class="skill-preview">
+                <span class="skill-name">💪 Remate:</span>
+                <span class="skill-rating">{{ previewData.remate || 1 }}/5</span>
+              </div>
+              <div class="skill-preview">
+                <span class="skill-name">🛡️ Defensa:</span>
+                <span class="skill-rating">{{ previewData.defensa || 1 }}/5</span>
+              </div>
+              <div class="skill-preview">
+                <span class="skill-name">💨 Velocidad:</span>
+                <span class="skill-rating">{{ previewData.velocidad || 1 }}/5</span>
+              </div>
+              <div class="skill-preview">
+                <span class="skill-name">🎯 Técnica:</span>
+                <span class="skill-rating">{{ previewData.tecnica || 1 }}/5</span>
+              </div>
+              <div class="skill-preview">
+                <span class="skill-name">🏃 Físico:</span>
+                <span class="skill-rating">{{ previewData.fisico || 1 }}/5</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botones de navegación -->
+    <div class="form-actions">
+      <button
+        type="button"
+        class="btn btn-secondary"
+        *ngIf="currentStep > 1"
+        (click)="previousStep()"
+      >
+        ← Anterior
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-primary"
+        *ngIf="currentStep < totalSteps"
+        [disabled]="!canProceedToNextStep()"
+        (click)="nextStep()"
+      >
+        Siguiente →
+      </button>
+
+      <button
+        type="submit"
+        class="btn btn-success"
+        *ngIf="currentStep === totalSteps"
+        [disabled]="!jugadorForm.valid || isSubmitting"
+        (click)="onSubmit()"
+      >
+        <span *ngIf="!isSubmitting">✅ Crear Jugador</span>
+        <span *ngIf="isSubmitting">⏳ Creando...</span>
+      </button>
+    </div>
+
+  </form>
+</div>

@@ -1,17 +1,115 @@
-<div class="container">
-    <div class="row text-center" style="justify-content: center;">
-        <div class="col-6">
-            Equipo 1
-            <div *ngFor="let t1 of teamOne; let i = index">
-                {{t1.nombre}}
-            </div>
-
-        </div>
-        <div class="col-6">
-            Equipo 2
-            <div *ngFor="let t2 of teamTwo; let i = index">
-                {{t2.nombre}}
-            </div>
-        </div>
+<div class="teams-container">
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <button class="back-button" (click)="goBack()">
+        <span class="back-icon">←</span>
+        Volver
+      </button>
+      <h2 class="title">Equipos Generados</h2>
     </div>
+    <div class="header-actions">
+      <button class="action-btn secondary" (click)="regenerateTeams()">
+        <span class="btn-icon">🔄</span>
+        Regenerar
+      </button>
+    </div>
+  </div>
+
+  <!-- Teams Display -->
+  <div class="teams-content" *ngIf="teamOne.length > 0 || teamTwo.length > 0">
+    
+    <!-- Teams Summary -->
+    <div class="teams-summary">
+      <div class="summary-card">
+        <div class="summary-info">
+          <h3>Distribución de Equipos</h3>
+          <p>Equipo 1: {{ teamOne.length }} jugadores | Equipo 2: {{ teamTwo.length }} jugadores</p>
+        </div>
+        <div class="balance-indicator" [class.balanced]="areTeamsBalanced()">
+          <span class="balance-text">
+            {{ getBalanceStatus() }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Teams Grid -->
+    <div class="teams-grid">
+      
+      <!-- Team One -->
+      <div class="team-card">
+        <div class="team-header">
+          <div class="team-info">
+            <h3 class="team-name">Equipo 1</h3>
+            <span class="team-count">{{ teamOne.length }} jugadores</span>
+          </div>
+          <div class="team-average">
+            <span class="average-score">{{ getTeamAverage(teamOne) }}</span>
+            <span class="average-label">promedio</span>
+          </div>
+        </div>
+
+        <div class="players-list">
+          <div class="player-item" *ngFor="let jugador of teamOne">
+            <div class="player-info">
+              <h4 class="player-name">{{ getPlayerName(jugador) }}</h4>
+              <p class="player-position">{{ getPositionsText(jugador) }}</p>
+            </div>
+            <div class="player-rating">
+              <span class="rating-score">{{ calculateAverage(jugador) }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VS Separator -->
+      <div class="vs-separator">
+        <div class="vs-circle">
+          <span class="vs-text">VS</span>
+        </div>
+      </div>
+
+      <!-- Team Two -->
+      <div class="team-card">
+        <div class="team-header">
+          <div class="team-info">
+            <h3 class="team-name">Equipo 2</h3>
+            <span class="team-count">{{ teamTwo.length }} jugadores</span>
+          </div>
+          <div class="team-average">
+            <span class="average-score">{{ getTeamAverage(teamTwo) }}</span>
+            <span class="average-label">promedio</span>
+          </div>
+        </div>
+
+        <div class="players-list">
+          <div class="player-item" *ngFor="let jugador of teamTwo">
+            <div class="player-info">
+              <h4 class="player-name">{{ getPlayerName(jugador) }}</h4>
+              <p class="player-position">{{ getPositionsText(jugador) }}</p>
+            </div>
+            <div class="player-rating">
+              <span class="rating-score">{{ calculateAverage(jugador) }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div class="empty-state" *ngIf="teamOne.length === 0 && teamTwo.length === 0">
+    <div class="empty-content">
+      <div class="empty-icon">⚽</div>
+      <h3>No hay equipos generados</h3>
+      <p>Selecciona jugadores y genera equipos para verlos aquí</p>
+      <button class="action-btn primary" (click)="regenerateTeams()">
+        <span class="btn-icon">👥</span>
+        Ir a Plantel
+      </button>
+    </div>
+  </div>
+
 </div>

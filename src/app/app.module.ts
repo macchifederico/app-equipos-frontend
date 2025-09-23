@@ -16,6 +16,9 @@ import { CrearJugadorComponent } from './components/crear-jugador/crear-jugador.
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GraficoComponent } from './components/grafico/grafico.component';
 import { NgChartsModule } from 'ng2-charts';
+import { SkillSliderComponent } from './components/skill-slider/skill-slider.component';
+import { PlayerPreviewComponent } from './components/player-preview/player-preview.component';
+import { PositionPresetComponent } from './components/position-preset/position-preset.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { NgChartsModule } from 'ng2-charts';
     TarjetaComponent,
     PrincipalComponent,
     CrearJugadorComponent,
-    GraficoComponent
+    GraficoComponent,
+    SkillSliderComponent,
+    PlayerPreviewComponent,
+    PositionPresetComponent
   ],
   imports: [
     BrowserModule,

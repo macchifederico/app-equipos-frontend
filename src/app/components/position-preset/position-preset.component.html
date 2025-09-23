@@ -1,0 +1,77 @@
+<div class="position-presets-container">
+  <div class="presets-header">
+    <h5 class="presets-title">🚀 Plantillas Rápidas</h5>
+    <p class="presets-subtitle">Selecciona un tipo de jugador para autocompletar habilidades</p>
+    <button
+      *ngIf="selectedPreset"
+      class="clear-btn"
+      (click)="clearSelection()"
+      type="button"
+    >
+      ✕ Limpiar selección
+    </button>
+  </div>
+
+  <div class="presets-grid">
+    <div
+      *ngFor="let preset of presets"
+      class="preset-card"
+      [class.selected]="isSelected(preset.id)"
+      [style.background]="preset.gradient"
+      (click)="selectPreset(preset)"
+    >
+      <div class="preset-content">
+        <div class="preset-header">
+          <div class="preset-icon">{{ preset.icon }}</div>
+          <div class="preset-info">
+            <h6 class="preset-name">{{ preset.name }}</h6>
+            <p class="preset-description">{{ preset.description }}</p>
+          </div>
+        </div>
+
+        <div class="preset-stats">
+          <div class="overall-badge">
+            <span class="overall-value">{{ getSkillAverage(preset) }}</span>
+            <span class="overall-text">OVR</span>
+          </div>
+
+          <div class="positions">
+            <span class="primary-pos">{{ preset.primaryPosition }}</span>
+            <span class="position-separator">/</span>
+            <span class="secondary-pos">{{ preset.secondaryPosition }}</span>
+          </div>
+        </div>
+
+        <div class="preset-skills" *ngIf="getTopSkills(preset).length > 0">
+          <div class="skills-label">Destacado en:</div>
+          <div class="top-skills">
+            <span
+              *ngFor="let skill of getTopSkills(preset); let last = last"
+              class="skill-tag"
+            >
+              {{ skill }}<span *ngIf="!last">, </span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Selection indicator -->
+        <div class="selection-indicator" *ngIf="isSelected(preset.id)">
+          <div class="checkmark">✓</div>
+        </div>
+      </div>
+
+      <!-- Hover effect overlay -->
+      <div class="preset-overlay"></div>
+    </div>
+  </div>
+
+  <div class="presets-footer" *ngIf="selectedPreset">
+    <div class="selection-info">
+      <span class="info-icon">ℹ️</span>
+      <span class="info-text">
+        Plantilla <strong>{{ getSelectedPresetName() }}</strong> aplicada.
+        Puedes ajustar las habilidades después.
+      </span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+<div class="player-preview-container" *ngIf="hasPlayerData()">
+  <div class="preview-header" *ngIf="showTitle">
+    <h4 class="preview-title">Vista Previa</h4>
+  </div>
+
+  <div class="player-card">
+    <!-- Header con nombre y overall -->
+    <div class="player-header">
+      <div class="player-avatar">
+        <img
+          *ngIf="playerData.img_url"
+          [src]="playerData.img_url"
+          [alt]="getPlayerName()"
+          class="avatar-img"
+        >
+        <div *ngIf="!playerData.img_url" class="avatar-placeholder">
+          <span class="avatar-initials">{{ getPlayerInitials() }}</span>
+        </div>
+      </div>
+
+      <div class="player-info">
+        <h3 class="player-name">{{ getPlayerName() }}</h3>
+        <p class="player-position">{{ getPositionsText() }}</p>
+      </div>
+
+      <div class="overall-rating">
+        <div class="overall-circle" [style.background-color]="getOverallColor()">
+          <span class="overall-number">{{ overallRating }}</span>
+        </div>
+        <span class="overall-label">{{ getOverallLabel() }}</span>
+      </div>
+    </div>
+
+    <!-- Skills Grid -->
+    <div class="skills-section" *ngIf="hasSkillData()">
+      <h5 class="section-title">Habilidades</h5>
+      <div class="skills-grid">
+        <div class="skill-item" *ngFor="let skill of ['tiro', 'remate', 'defensa', 'velocidad', 'gambeta']">
+          <span class="skill-name">{{ skillNames[skill] }}</span>
+          <div class="skill-bar">
+            <div
+              class="skill-fill"
+              [style.width.%]="(getSkillValue(skill) / 5) * 100"
+              [style.background-color]="getSkillColor(getSkillValue(skill))"
+            ></div>
+            <span class="skill-value">{{ getSkillValue(skill) }}</span>
+          </div>
+        </div>
+
+        <div class="skill-item" *ngFor="let skill of ['fisico', 'tecnica', 'rusticidad', 'temperamento', 'lesiones']">
+          <span class="skill-name">{{ skillNames[skill] }}</span>
+          <div class="skill-bar">
+            <div
+              class="skill-fill"
+              [style.width.%]="(getSkillValue(skill) / 5) * 100"
+              [style.background-color]="getSkillColor(getSkillValue(skill))"
+            ></div>
+            <span class="skill-value">{{ getSkillValue(skill) }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Strengths and Weaknesses -->
+    <div class="analysis-section" *ngIf="strengthsAndWeaknesses.strengths.length > 0 || strengthsAndWeaknesses.weaknesses.length > 0">
+      <div class="strengths" *ngIf="strengthsAndWeaknesses.strengths.length > 0">
+        <h6 class="analysis-title strengths-title">💪 Fortalezas</h6>
+        <div class="tags">
+          <span class="tag strength-tag" *ngFor="let strength of strengthsAndWeaknesses.strengths">
+            {{ strength }}
+          </span>
+        </div>
+      </div>
+
+      <div class="weaknesses" *ngIf="strengthsAndWeaknesses.weaknesses.length > 0">
+        <h6 class="analysis-title weaknesses-title">⚠️ A mejorar</h6>
+        <div class="tags">
+          <span class="tag weakness-tag" *ngFor="let weakness of strengthsAndWeaknesses.weaknesses">
+            {{ weakness }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Empty State -->
+<div class="empty-state" *ngIf="!hasPlayerData()">
+  <div class="empty-icon">⚽</div>
+  <p class="empty-text">Completa los datos para ver la vista previa del jugador</p>
+</div>

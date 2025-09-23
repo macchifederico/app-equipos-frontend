@@ -1,24 +1,71 @@
-<p>Tarjeta por jugador</p>
+<div class="players-container">
+  <div class="header">
+    <div class="header-left">
+      <button class="back-button" (click)="goBack()">
+        <span class="back-icon">←</span>
+        Volver
+      </button>
+      <h2 class="title">Jugadores</h2>
+    </div>
+    <span class="count">{{ jugadores.length }} total</span>
+  </div>
 
-<div class="row g-4">
-  <div class="col-sm-12 col-md-4" *ngFor="let jugador of jugadores; let i = index">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">{{jugador.nombre.toUpperCase()}}</h5>
+  <div class="cards-grid" *ngIf="jugadores.length > 0">
+    <div class="player-card" *ngFor="let jugador of jugadores; let i = index">
+
+      <!-- Header minimalista -->
+      <div class="card-header">
+        <div class="player-info">
+          <h3 class="player-name">{{ getPlayerName(jugador) }}</h3>
+          <p class="player-position">{{ getPositionsText(jugador) }}</p>
+        </div>
+        <div class="average-score">
+          <span class="score">{{ calculateAverage(jugador) }}</span>
+          <span class="score-label">promedio</span>
+        </div>
       </div>
-      <div class="text-center">
-        <canvas baseChart class="chart"
-        [data]="radarChartDataArray[i]"
-        [options]="radarChartOptions"
-        [type]="radarChartType">
+
+      <!-- Gráfico principal (más grande) -->
+      <div class="chart-container">
+        <canvas baseChart
+                class="radar-chart"
+                [data]="radarChartDataArray[i]"
+                [options]="radarChartOptions"
+                [type]="radarChartType">
         </canvas>
       </div>
-      <ul class="list-group coso">
-        <li class="list-group-item" *ngIf="jugador.posicion_1.toUpperCase()">Posicion: {{jugador.posicion_1.toUpperCase() ?
-          jugador.posicion_1.toUpperCase() : ""}}</li>
-        <li class="list-group-item" *ngIf="jugador.posicion_2.toUpperCase()">Posicion: {{jugador.posicion_2.toUpperCase()}}
-        </li>
-      </ul>
+
+      <!-- Footer con datos básicos -->
+      <div class="card-footer">
+        <div class="stats-row">
+          <div class="stat">
+            <span class="stat-value">{{ (jugador.tiro || 1) }}</span>
+            <span class="stat-label">Tiro</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">{{ (jugador.defensa || 1) }}</span>
+            <span class="stat-label">Defensa</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">{{ (jugador.tecnica || 1) }}</span>
+            <span class="stat-label">Técnica</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">{{ (jugador.velocidad || 1) }}</span>
+            <span class="stat-label">Velocidad</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Estado vacío -->
+  <div class="empty-state" *ngIf="jugadores.length === 0">
+    <div class="empty-content">
+      <div class="empty-icon">📊</div>
+      <h3>No hay jugadores</h3>
+      <p>Crea jugadores para ver sus estadísticas aquí</p>
     </div>
   </div>
 </div>

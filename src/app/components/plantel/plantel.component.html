@@ -1,21 +1,181 @@
-    <h3 class="mb-3">Elegi jugadores</h3>
-    <button class="btn btn-info mb-3" style="width: 100%;" type="submit"
-    (click)="getTeams()">Generar equipos</button>
-    <div class="form-grupu form-check" *ngFor="let jugador of jugadores; let i = index">
-        <input class="form-check-input col-3" type="checkbox" [value]="jugador"
-        id="exampleCheck{{i}}" (click)="seleccionarJugadores(jugador)">
-        <div class="row">
-            <div class="col-6">        
-                {{jugador.nombre}}
-            </div>
-            <div class="col-5">
-                <ngb-rating [max]="5" [readonly]="true"  [rate]="jugador.promedioHabilidades"></ngb-rating>
-            </div>
-            <div class="col-1">
-                <button style="border: none; background-color: white; color: red;" (click)="borrarJugador(jugador)">
-                    <i class="fa-solid fa-trash"></i>
-                </button>
-            </div>
-        </div>
+<div class="players-container">
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <button class="back-button" (click)="goBack()">
+        <span class="back-icon">←</span>
+        Volver
+      </button>
+      <h2 class="title">Jugadores</h2>
     </div>
-    <button class="btn btn-warning mb-3" style="width: 100%;" routerLink="/crearJugador">Agregar jugador</button>
+    <span class="count">{{ jugadores.length }} total</span>
+  </div>
+
+  <!-- Tabs Navigation -->
+  <div class="tabs-container">
+    <div class="tabs-nav">
+      <button 
+        class="tab-button" 
+        [class.active]="activeTab === 'list'"
+        (click)="setActiveTab('list')">
+        Lista
+      </button>
+      <button 
+        class="tab-button" 
+        [class.active]="activeTab === 'cards'"
+        (click)="setActiveTab('cards')">
+        Tarjetas
+      </button>
+    </div>
+  </div>
+
+  <!-- Tab Content: Lista -->
+  <div class="tab-content" *ngIf="activeTab === 'list'">
+    
+    <!-- Action Buttons -->
+    <div class="action-buttons" *ngIf="jugadores.length > 0">
+      <button 
+        class="action-btn primary" 
+        [disabled]="jugadoresSeleccionados.length === 0"
+        (click)="getTeams()">
+        <span class="btn-icon">⚽</span>
+        Generar equipos ({{ jugadoresSeleccionados.length }})
+      </button>
+      <button 
+        class="action-btn secondary" 
+        routerLink="/crearJugador">
+        <span class="btn-icon">➕</span>
+        Agregar jugador
+      </button>
+    </div>
+
+    <!-- Players List -->
+    <div class="players-list" *ngIf="jugadores.length > 0">
+      <div 
+        class="player-row" 
+        *ngFor="let jugador of jugadores; let i = index"
+        [class.selected]="jugadoresSeleccionados.includes(jugador)">
+        
+        <!-- Checkbox -->
+        <div class="player-checkbox">
+          <input 
+            type="checkbox" 
+            [value]="jugador"
+            [id]="'player-' + i"
+            (change)="seleccionarJugadores(jugador)"
+            class="checkbox-input">
+          <label [for]="'player-' + i" class="checkbox-label"></label>
+        </div>
+
+        <!-- Player Info -->
+        <div class="player-info">
+          <div class="player-main">
+            <h4 class="player-name">{{ getPlayerName(jugador) }}</h4>
+            <p class="player-position">{{ getPositionsText(jugador) }}</p>
+          </div>
+        </div>
+
+        <!-- Rating -->
+        <div class="player-rating">
+          <div class="average-score">
+            <span class="score">{{ calculateAverage(jugador) }}</span>
+            <span class="score-label">promedio</span>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="player-actions">
+          <button 
+            class="delete-btn" 
+            (click)="borrarJugador(jugador)"
+            title="Eliminar jugador">
+            <span class="delete-icon">🗑️</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State for List -->
+    <div class="empty-state" *ngIf="jugadores.length === 0">
+      <div class="empty-content">
+        <div class="empty-icon">👥</div>
+        <h3>No hay jugadores</h3>
+        <p>Crea tu primer jugador para comenzar</p>
+        <button class="action-btn primary" routerLink="/crearJugador">
+          <span class="btn-icon">➕</span>
+          Crear jugador
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Tab Content: Tarjetas -->
+  <div class="tab-content" *ngIf="activeTab === 'cards'">
+    
+    <div class="cards-grid" *ngIf="jugadores.length > 0">
+      <div class="player-card" *ngFor="let jugador of jugadores; let i = index">
+
+        <!-- Header minimalista -->
+        <div class="card-header">
+          <div class="player-info-card">
+            <h3 class="player-name">{{ getPlayerName(jugador) }}</h3>
+            <p class="player-position">{{ getPositionsText(jugador) }}</p>
+          </div>
+          <div class="average-score">
+            <span class="score">{{ calculateAverage(jugador) }}</span>
+            <span class="score-label">promedio</span>
+          </div>
+        </div>
+
+        <!-- Gráfico principal -->
+        <div class="chart-container">
+          <canvas baseChart
+                  class="radar-chart"
+                  [data]="radarChartDataArray[i]"
+                  [options]="radarChartOptions"
+                  [type]="radarChartType">
+          </canvas>
+        </div>
+
+        <!-- Footer con datos básicos -->
+        <div class="card-footer">
+          <div class="stats-row">
+            <div class="stat">
+              <span class="stat-value">{{ (jugador.tiro || 1) }}</span>
+              <span class="stat-label">Tiro</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">{{ (jugador.defensa || 1) }}</span>
+              <span class="stat-label">Defensa</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">{{ (jugador.tecnica || 1) }}</span>
+              <span class="stat-label">Técnica</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">{{ (jugador.velocidad || 1) }}</span>
+              <span class="stat-label">Velocidad</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Empty State for Cards -->
+    <div class="empty-state" *ngIf="jugadores.length === 0">
+      <div class="empty-content">
+        <div class="empty-icon">📊</div>
+        <h3>No hay jugadores</h3>
+        <p>Crea jugadores para ver sus estadísticas aquí</p>
+        <button class="action-btn primary" routerLink="/crearJugador">
+          <span class="btn-icon">➕</span>
+          Crear jugador
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+</div>

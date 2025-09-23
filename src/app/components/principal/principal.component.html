@@ -1,19 +1,37 @@
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            Nombre de la app: Equipos
-        </div>
+<div class="main-container">
+  <!-- Header -->
+  <div class="header">
+    <h1 class="title">Equipos</h1>
+  </div>
+
+  <!-- Navigation Cards -->
+  <div class="cards-grid">
+    <!-- Plantel Card -->
+    <div class="nav-card" [routerLink]="['/plantel']">
+      <div class="card-icon">
+        <span class="icon">👥</span>
+      </div>
+      <div class="card-content">
+        <h3 class="card-title">Plantel</h3>
+        <p class="card-description">Gestiona y visualiza tu plantel de jugadores</p>
+      </div>
+      <div class="card-arrow">
+        <span class="arrow">→</span>
+      </div>
     </div>
-    <div class="row text-center" style="justify-content: center;">
-        <div class="row">
-            <div class="col-12">
-                <button type="submit" class="btn btn-dark" style="display: block; margin: auto; width: 100%;" [routerLink]="['/plantel']">Plantel</button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <button type="submit" class="btn btn-dark" style="display: block; margin: auto; width: 100%;" [routerLink]="['/jugadores']">Tarjetas</button>
-            </div>
-        </div>
+
+    <!-- Tarjetas Card -->
+    <div class="nav-card" [routerLink]="['/jugadores']">
+      <div class="card-icon">
+        <span class="icon">📊</span>
+      </div>
+      <div class="card-content">
+        <h3 class="card-title">Tarjetas</h3>
+        <p class="card-description">Analiza estadísticas y rendimiento de jugadores</p>
+      </div>
+      <div class="card-arrow">
+        <span class="arrow">→</span>
+      </div>
     </div>
+  </div>
 </div>
